@@ -1,5 +1,6 @@
 package net.luc6.testmod;
 
+import net.luc6.testmod.block.ModBlocks;
 import net.luc6.testmod.item.ModItems;
 import net.minecraft.client.gui.screens.CreateBuffetWorldScreen;
 import org.slf4j.Logger;
@@ -59,7 +60,7 @@ public class TestMod
         NeoForge.EVENT_BUS.register(this);
 
         ModItems.register(modEventBus);
-
+        ModBlocks.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -81,6 +82,9 @@ public class TestMod
             event.accept(ModItems.BISMUTH);
             event.accept(ModItems.RAW_BISMUTH);
             event.accept(ModItems.BISMUTH_INGOT);
+        }
+        if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS){
+            event.accept(ModBlocks.BISMUTH_BLOCK);
         }
     }
 
